@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DFModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DFModelStoreContainer">
+    <EntitySet Name="Company" EntityType="DFModel.Store.Company" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="DFModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Company_User" Association="DFModel.Store.FK_Company_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_User1" Association="DFModel.Store.FK_Company_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_User2" Association="DFModel.Store.FK_Company_User2">
+      <End Role="User" EntitySet="User" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="CreatedByUserId" Type="uniqueidentifier" />
+    <Property Name="ModifiedByUserId" Type="uniqueidentifier" />
+    <Property Name="DeactivatedByUserId" Type="uniqueidentifier" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="CreatedByUserId" Type="uniqueidentifier" />
+    <Property Name="ModifiedByUserId" Type="uniqueidentifier" />
+    <Property Name="DeactivatedByUserId" Type="uniqueidentifier" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Company_User">
+    <End Role="User" Type="DFModel.Store.User" Multiplicity="0..1" />
+    <End Role="Company" Type="DFModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CreatedByUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_User1">
+    <End Role="User" Type="DFModel.Store.User" Multiplicity="0..1" />
+    <End Role="Company" Type="DFModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="ModifiedByUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_User2">
+    <End Role="User" Type="DFModel.Store.User" Multiplicity="0..1" />
+    <End Role="Company" Type="DFModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="DeactivatedByUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

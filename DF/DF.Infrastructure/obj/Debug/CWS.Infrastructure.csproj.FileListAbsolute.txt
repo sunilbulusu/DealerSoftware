@@ -1,0 +1,14 @@
+C:\CWS\CWS.Infrastructure\bin\Debug\CWS.Infrastructure.dll.config
+C:\CWS\CWS.Infrastructure\bin\Debug\CWS.Infrastructure.dll
+C:\CWS\CWS.Infrastructure\bin\Debug\CWS.Infrastructure.pdb
+C:\CWS\CWS.Infrastructure\bin\Debug\CWS.Core.dll
+C:\CWS\CWS.Infrastructure\bin\Debug\CWS.Domain.dll
+C:\CWS\CWS.Infrastructure\bin\Debug\Magic.dll
+C:\CWS\CWS.Infrastructure\bin\Debug\CWS.Repositories.dll
+C:\CWS\CWS.Infrastructure\bin\Debug\CWS.Core.pdb
+C:\CWS\CWS.Infrastructure\bin\Debug\CWS.Domain.pdb
+C:\CWS\CWS.Infrastructure\bin\Debug\Magic.pdb
+C:\CWS\CWS.Infrastructure\bin\Debug\CWS.Repositories.pdb
+C:\CWS\CWS.Infrastructure\obj\Debug\ResolveAssemblyReference.cache
+C:\CWS\CWS.Infrastructure\obj\Debug\CWS.Infrastructure.dll
+C:\CWS\CWS.Infrastructure\obj\Debug\CWS.Infrastructure.pdb

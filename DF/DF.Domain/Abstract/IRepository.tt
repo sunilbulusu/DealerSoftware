@@ -1,0 +1,97 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+
+<#@ output extension=".cs"#>
+<#
+
+// This needs to be set to the .edmx file that you want to process.
+
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+MetadataTools ef = new MetadataTools(this);
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+
+namespace <#= code.VsNamespaceSuggestion() #>
+{ 
+	public interface IRepository<T> 
+	{
+		IUnitOfWork UnitOfWork { get; set; }
+		IQueryable<T> All();
+		IQueryable<T> Where(Expression<Func<T, bool>> expression);
+		void Add(T entity);
+		void Delete(T entity);
+	}
+}
+<#
+
+fileManager.StartNewFile("IUnitOfWork.cs");
+#>
+using System.Data.Objects;
+namespace <#= code.VsNamespaceSuggestion() #>
+{
+	public interface IUnitOfWork
+	{
+		ObjectContext Context { get; set; }
+		void Commit();
+		bool LazyLoadingEnabled { get; set; }
+		bool ProxyCreationEnabled { get; set; }
+		string ConnectionString { get; set; }
+	}
+}		
+<#	fileManager.Process();#>
+
+
+
+<#+
+
+bool DoesFileExist(string filename)
+{			
+	return File.Exists(Path.Combine(GetCurrentDirectory(),filename));	
+}
+
+string OutputFile(string filename)
+{
+	using(StreamReader sr = new StreamReader(Path.Combine(GetCurrentDirectory(),filename)))
+	{
+		string contents = sr.ReadToEnd();
+		return contents;
+	}
+}
+
+string GetCurrentDirectory()
+{
+	string executingDirectoryName = "";
+	string stackTraceFileName = new StackTrace(true).GetFrame(0).GetFileName();
+	if (String.IsNullOrEmpty(stackTraceFileName))
+	{
+		throw new ArgumentException("No value was specified for the 'directoryName' configuration parameter" +
+			", and we could not figure out the file name from the stack trace (most likely because of running " +
+			"the template with debug='False' specified in the <\u0023@ template \u0023> directive.");
+	}
+	else
+	{		
+		executingDirectoryName = Path.GetDirectoryName(stackTraceFileName);
+	}	
+	return executingDirectoryName;
+}
+
+string FindEDMXFileName()
+{
+	string edmxFile = "";
+				
+	string[] entityFrameworkFiles = Directory.GetFiles(GetCurrentDirectory(), "*.edmx");
+	if(entityFrameworkFiles.Length > 0)
+		edmxFile = entityFrameworkFiles[0];
+	
+	return edmxFile;
+}
+#>

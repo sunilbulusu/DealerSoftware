@@ -1,0 +1,88 @@
+﻿@model CWS.Domain.Abstract.ITeam
+
+@{
+
+}
+
+<script type="text/javascript">
+    function EditDetails(id) {
+        $("#divTeamDetails").load('@Url.Action("EditDetailPartial",new {id=Model.Id})');
+    }
+
+    function CancelEditDetails(id) {
+        $("#divTeamDetails").load('@Url.Action("DetailPartial",new {id=Model.Id})');
+    }
+</script>
+
+
+
+<input type="hidden" id="hdnTeamId" value='@Model.Id' />
+
+@*<div class="detail">
+    <div id="divTeamDetails">
+        
+    </div>
+
+    <div id="divTeamRegions">
+        @Html.Partial("RegionsPartial", @Model.TeamRegion)
+    </div>
+ 
+    <div id="divTeamUsers">
+        @Html.Partial("TeamUsersPartial", @Model.UserTeam)
+    </div>
+    
+    <div id="divAvailableUsersForTeam">
+        @Html.Partial("AvailableUsersForTeam",@Model.Id)
+
+    </div>
+</div>*@
+
+<script type="text/javascript">
+    $(function () {
+        $("#teamDetails").tabs();
+    })
+</script>
+
+<div class="breadcrumbs">
+    <ul>
+        <li>
+            <a href="/admin">administration</a> &gt;
+        </li>
+        <li>
+            <a href="/admin/team">teams</a> &gt;
+        </li>
+        <li>
+            team detail
+        </li>
+    </ul>
+
+</div>
+
+<div id="teamDetails" class="tabified">
+    <div class="header">@Model.Name - Team Details</div> 
+    <ul>
+        <li><a href="#tabs-1">Details</a></li>
+        <li><a href="#tabs-2">Regions</a></li>
+        <li><a href="#tabs-3">Users</a></li>
+        <li><a href="#tabs-4">Team Roles</a></li>
+    </ul>
+    
+    <div id="tabs-1">
+        <div id="divTeamDetails" style="min-height:300px;">
+            @Html.Partial("DetailPartial", @Model)      
+        </div>
+    </div>
+    <div id="tabs-2">
+        <div id="divTeamRegions"  style="min-height:300px;">
+            @Html.Partial("RegionsPartial", @Model.TeamRegion)
+        </div>
+    </div>
+    <div id="tabs-3">
+        <div id="divTeamUsers"  style="min-height:300px;">
+            @Html.Partial("TeamUsersPartial", @Model.UserTeam)
+        </div>
+    </div>
+    <div id="tabs-4"  style="min-height:300px;">
+        to do
+    </div>
+</div>

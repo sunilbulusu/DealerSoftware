@@ -1,0 +1,23 @@
+﻿@model DF.Domain.Abstract.ITeam
+
+@{
+
+}
+
+<h1>@ViewBag.Title</h1>
+
+<input type="hidden" id="hdnTeamId" value='@Model.Id' />
+
+<div class="detail">
+    <div id="divTeamDetails">
+        @Html.Partial("DetailPartial", @Model)
+    </div>
+
+    <div id="divTeamRegions">
+        @Html.Partial("RegionsPartial", @Model.TeamRegion)
+    </div>
+ 
+    <div id="divTeamUsers">
+        @Html.Partial("TeamUsersPartial", @Model.UserTeam)
+    </div>
+</div>

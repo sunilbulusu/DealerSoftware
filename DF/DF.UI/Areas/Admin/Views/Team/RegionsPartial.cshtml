@@ -1,0 +1,111 @@
+﻿@model IEnumerable<DF.Domain.Abstract.ITeamRegion>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $('#formRemoveRegion').submit(function () {
+                var idVal = $("#formRemoveRegionId").val();
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: "id=" + idVal,
+                    success: RemoveRegionSuccess,
+                    error: RemoveRegionError,
+                });
+                return false;
+            });
+        });
+
+        function RemoveRegionSuccess(result)
+        {
+            alert(result.id);
+            $("#li-" + result.id).slideUp();
+        }
+
+        function RemoveRegionError()
+        {
+            alert('error');
+        }
+
+        function RemoveRegion(id)
+        {
+            $("#formRemoveRegionId").val(id);
+            $("#formRemoveRegion").submit();
+        }
+
+        $(function () {
+            $("#lnkAddRegion").click(
+                function() { 
+                    $("#divAddRegions")
+                        .load('@Url.Action("AddRegionForTeam", "Region", new { id = Model.Select(m => m.TeamId).FirstOrDefault() })');
+
+                
+                     $("#divAddRegions").popupWithMarginOffset(-40, 0, 0, 30);
+                    });              
+        });
+
+
+        function AddRegionSuccess(result)
+        {
+            alert(result);
+            $("#div-" + result.id).animate({
+                opacity:0
+            },500
+            ,function () {
+                $("#ulTeamRegions").add(result);
+            }
+            
+            );
+        }
+
+        function AddRegionError()
+        {
+            alert('fail');
+        }
+        
+    </script>
+
+
+    <div class="section radius5px" id="sectionTeamRegion">
+            <div class="commands">
+               <a href="#" class="add" id="lnkAddRegion" title="Add Region"></a>
+               <div id="divAddRegions" class="addItemsContainer radius5px"></div>
+               <a href="#" class="edit" title="Edit"></a>           
+            </div>
+            <h2>
+                Regions
+            </h2>
+       
+           <div class="content">
+           @using (Html.BeginForm("RemoveRegion", "Team", FormMethod.Post, new { id = "formRemoveRegion" }))
+           {
+                <input type="hidden" name="formRemoveRegionId" id="formRemoveRegionId" />
+           
+                <ul id="ulTeamRegions">
+            
+                @foreach (var teamRegion in @Model)
+                {
+                    @Html.Partial("RegionsItemPartial", teamRegion);
+                    
+                   @* <li id="li-@teamRegion.Id">
+                        <div class="commands">
+                           <a href="#" id="lnk-@teamRegion.Id" onclick="RemoveRegion('@teamRegion.Id')">delete</a>                   
+                        </div>
+                        @teamRegion.Region.Name
+                        <ul id="ulTeamRegionLocations">
+                            @foreach (var location in teamRegion.Region.RegionLocation)
+                            {
+                                <li>
+                                    @location.Value
+                                </li>
+                            }
+                        </ul>
+                    </li>*@
+                }
+        
+                </ul>
+           }
+
+
+            </div>
+        </div>

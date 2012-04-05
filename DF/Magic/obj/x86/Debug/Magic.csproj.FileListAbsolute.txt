@@ -1,0 +1,10 @@
+C:\CWS\Magic\bin\x86\Debug\Magic.dll
+C:\CWS\Magic\bin\x86\Debug\Magic.pdb
+C:\CWS\Magic\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\CWS\Magic\obj\x86\Debug\Magic.dll
+C:\CWS\Magic\obj\x86\Debug\Magic.pdb
+C:\DF\Magic\bin\x86\Debug\Magic.dll
+C:\DF\Magic\bin\x86\Debug\Magic.pdb
+C:\DF\Magic\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\DF\Magic\obj\x86\Debug\Magic.dll
+C:\DF\Magic\obj\x86\Debug\Magic.pdb

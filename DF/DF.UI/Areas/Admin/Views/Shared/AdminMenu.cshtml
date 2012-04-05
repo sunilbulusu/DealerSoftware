@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DF.Domain.Abstract.IMenu>
+
+<script type="text/javascript">
+    function ShowSubMenu(id) {
+        if ($("#adminPopup-" + id).css("display") == "none") {
+            HideSubMenu();
+            $("#adminPopup-" + id).slideDown("fast");
+            $("#adminPopup-" + id).css("display", "inline");
+        }
+        return false;
+    }
+
+    function HideSubMenu() {
+        
+        $(".adminPopup").slideUp("fast");
+        return false;
+    }
+</script>
+
+@foreach (var menuItem in Model)
+{
+
+        
+    <img src="/library/images/@menuItem.ImageUrl" id="adminButton-@menuItem.Id" class="adminMenuButton" alt="@menuItem.DisplayText" 
+    title="@menuItem.DisplayText"
+    onclick="return ShowSubMenu('@menuItem.Id');"
+     />
+    
+        
+    <div id="adminPopup-@menuItem.Id" class="adminPopup hide radius5px">
+        <div class="close" onclick='$(this).parent().closePopup("fast");'>
+            X</div>
+        <img src="/library/images/admin_button_arrow.png" class="popupArrow" />
+        <ul>
+            @foreach (var item in menuItem.Menu1.OrderBy(m=>m.SortOrder).ToList())
+            {
+                <li>@Html.ActionLink(item.DisplayText, item.Action,item.Controller) </li>
+            }
+        </ul>
+    </div>
+    
+}

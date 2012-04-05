@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CWSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="CWSModelStoreContainer">
+    <EntitySet Name="Menu" EntityType="CWSModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuPattern" EntityType="CWSModel.Store.MenuPattern" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuType" EntityType="CWSModel.Store.MenuType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="CWSModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Menu_MenuType" Association="CWSModel.Store.FK_Menu_MenuType">
+      <End Role="MenuType" EntitySet="MenuType" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuType_MenuPattern" Association="CWSModel.Store.FK_MenuType_MenuPattern">
+      <End Role="MenuPattern" EntitySet="MenuPattern" />
+      <End Role="MenuType" EntitySet="MenuType" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DisplayText" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="MenuTypeId" Type="int" />
+    <Property Name="Action" Type="varchar" MaxLength="200" />
+    <Property Name="CSSClass" Type="varchar" MaxLength="50" />
+    <Property Name="ImageUrl" Type="varchar" MaxLength="200" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="SortOrder" Type="smallint" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MenuPattern">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Horizontal" Type="bit" Nullable="false" />
+    <Property Name="Columns" Type="int" />
+    <Property Name="Rows" Type="int" />
+  </EntityType>
+  <EntityType Name="MenuType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CSSClass" Type="varchar" MaxLength="50" />
+    <Property Name="MenuPatternId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserStatusId" Type="char" MaxLength="8" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Menu_MenuType">
+    <End Role="MenuType" Type="CWSModel.Store.MenuType" Multiplicity="0..1" />
+    <End Role="Menu" Type="CWSModel.Store.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="MenuTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuType_MenuPattern">
+    <End Role="MenuPattern" Type="CWSModel.Store.MenuPattern" Multiplicity="1" />
+    <End Role="MenuType" Type="CWSModel.Store.MenuType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuPattern">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MenuType">
+        <PropertyRef Name="MenuPatternId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

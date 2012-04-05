@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DF.Domain.Abstract.IUser>
+
+<div class="addItem">
+    @Html.ActionLink("Add User", "Add")
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#tblUsers").alternateBackground();
+    });
+
+
+</script>
+
+<h1>@ViewBag.Title</h1>
+
+<div class="formMessage">
+    @ViewBag.Message
+</div>
+
+<table id="form">
+    <tr>
+        <td>       
+            <table id="tblUsers">
+                <thead>
+                    <tr>
+                        <th>
+                            First
+                        </th>
+                        <th>
+                            Last
+                        </th>
+                        <th>
+                            Username
+                        </th>
+                        <th>&nbsp;</th>
+                        <th>
+                            &nbsp;
+                        </th>
+                        <th class="processing hide">
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>
+                                @user.FirstName
+                            </td>
+                            <td>
+                                @user.LastName
+                            </td>
+                            <td>
+                                @user.UserName
+                            </td>
+                            <td>
+                                <a href='@Url.Action("Edit", "User",new {id=user.Id})'>
+                                    <img src="/library/images/edit.gif" alt="Edit" title="Edit User" />
+                                </a>
+                            </td>
+                            <td>
+                                @if (user.Active)
+                                {                                    
+                                    <a href="#" id="lnkDelete-@user.Id"><img src="/library/images/active.gif" alt="Active" title="Click To Delete" /></a>
+                                   
+                                }
+                                else
+                                {
+                                    <a href="#" id="lnkActivate-@user.Id">
+                                        <img src="/library/images/inactive.gif" alt="Active" title="Click To Make Active" /></a>
+                                }
+                            </td>
+                            <td class="processing hide">
+                                
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+       
+            </table>
+        </td>
+    </tr>
+</table>

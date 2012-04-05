@@ -1,0 +1,10 @@
+C:\DF\DF.domain\bin\x86\Debug\DF.Domain.dll.config
+C:\DF\DF.domain\bin\x86\Debug\DF.Domain.dll
+C:\DF\DF.domain\bin\x86\Debug\DF.Domain.pdb
+C:\DF\DF.domain\bin\x86\Debug\EntityFramework.dll
+C:\DF\DF.domain\bin\x86\Debug\Magic.dll
+C:\DF\DF.domain\bin\x86\Debug\Magic.pdb
+C:\DF\DF.domain\bin\x86\Debug\EntityFramework.xml
+C:\DF\DF.domain\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\DF\DF.domain\obj\x86\Debug\DF.Domain.dll
+C:\DF\DF.domain\obj\x86\Debug\DF.Domain.pdb

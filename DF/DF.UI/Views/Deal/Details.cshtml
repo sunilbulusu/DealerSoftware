@@ -1,0 +1,56 @@
+﻿@model DF.Domain.Concrete.Deal
+@{
+
+}
+@*<script type="text/javascript">
+    function EditDetails(id) {
+        $("#divDealInfo").load('@Url.Action("EditDealPartial",new {id=Model.Id})');
+    }
+</script>*@
+<script type="text/javascript">
+    $(function () {
+        $("#teamDetails").tabs();
+    })
+</script>
+<div id="teamDetails" class="tabified">
+    <div class="header">
+        Information</div>
+    <ul>
+        <li><a href="#tabs-1">Deal Info</a></li>
+        <li><a href="#tabs-2">Buyer</a></li>
+        <li><a href="#tabs-3">Vehicle</a></li>
+        <li><a href="#tabs-4">Purchase Contract</a></li>
+        <li><a href="#tabs-5">MV11</a></li>
+        <li><a href="#tabs-6">WB431S</a></li>
+    </ul>
+    <div id="tabs-1">
+        <div id="divDealInfo" style="min-height: 300px;">
+            @Html.Partial("_viewDealPartial", @Model.Id)
+        </div>
+    </div>
+    <div id="tabs-2">
+        <div id="divBuyer" style="min-height: 300px;">
+            @*@Html.Partial("BuyerPartial", @Model)*@
+        </div>
+    </div>
+    <div id="tabs-3">
+        <div id="divVehicle" style="min-height: 300px;">
+            @*@Html.Partial("VehiclePartial", @Model)*@
+        </div>
+    </div>
+    <div id="tabs-4">
+        <div id="divPurchaseContract" style="min-height: 300px;">
+            @*@Html.Partial("ContractPartial", @Model)*@
+        </div>
+    </div>
+    <div id="tabs-5">
+        <div id="divMV11" style="min-height: 300px;">
+            @*@Html.Partial("MV11", @Model)*@
+        </div>
+    </div>
+    <div id="tabs-6">
+        <div id="divWB431S" style="min-height: 300px;">
+            @*@Html.Partial("WB431S", @Model)*@
+        </div>
+    </div>
+</div>

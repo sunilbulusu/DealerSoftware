@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DF.Domain.Abstract.IRegionLocationType>
+
+<div class="addItem">
+    @Html.ActionLink("Add Region Location Type", "AddRegionLocationType")
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#tblRegionLocationType").alternateBackground();
+    });
+
+
+</script>
+
+<h1>@ViewBag.Title</h1>
+
+<div class="formMessage">
+    @ViewBag.Message
+</div>
+
+<table id="form">
+    <tr>
+        <td>       
+            <table id="tblRegionLocationType">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>&nbsp;</th>
+                        <th>
+                            &nbsp;
+                        </th>
+                        <th class="processing hide">
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var regionlocationtype in Model)
+                    {
+                        <tr>
+                            <td>
+                                @regionlocationtype.Name
+                            </td>
+                            <td>
+                                @regionlocationtype.Description
+                            </td>
+                            <td>
+                                <a href='@Url.Action("EditRegionLocationType", "RegionLocationType", new { id = regionlocationtype.Id })'>
+                                    <img src="/library/images/edit.gif" alt="Edit" title="Edit Region Location Type" />
+                                </a>
+                            </td>
+  
+                            <td class="processing hide">
+                                
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+       
+            </table>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,9 @@
+C:\CWS\CWS.Models\bin\Debug\CWS.Models.dll.config
+C:\CWS\CWS.Models\bin\Debug\CWS.Models.dll
+C:\CWS\CWS.Models\bin\Debug\CWS.Models.pdb
+C:\CWS\CWS.Models\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\CWS\CWS.Models\obj\x86\Debug\CWS.Models.Properties.Resources.resources
+C:\CWS\CWS.Models\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\CWS\CWS.Models\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\CWS\CWS.Models\obj\x86\Debug\CWS.Models.dll
+C:\CWS\CWS.Models\obj\x86\Debug\CWS.Models.pdb

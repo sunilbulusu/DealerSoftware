@@ -1,0 +1,26 @@
+﻿@model IEnumerable<DF.Domain.Abstract.IUserTeam>
+
+<div class="section radius5px">
+        <div class="commands">
+            <a href="#"><img src="/Library/Images/edit.gif" title="Edit" /></a>
+        </div>
+        <h2>
+            Users
+        </h2>
+       
+       <div class="content">
+        <ul>
+            
+        @foreach(var userTeam in @Model)
+        {
+           <li>
+                <span>@userTeam.User.FirstName</span>&nbsp;<span>@userTeam.User.LastName</span>
+                <span>@userTeam.TeamRole.Role.Name</span>
+            </li>
+        }
+
+        
+        </ul>
+
+        </div>
+    </div>

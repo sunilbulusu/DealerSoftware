@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DFModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DFModelStoreContainer">
+    <EntitySet Name="Address" EntityType="DFModel.Store.Address" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Buyer" EntityType="DFModel.Store.Buyer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Company" EntityType="DFModel.Store.Company" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Contact" EntityType="DFModel.Store.Contact" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Deal" EntityType="DFModel.Store.Deal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Dealership" EntityType="DFModel.Store.Dealership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Document" EntityType="DFModel.Store.Document" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Instructions" EntityType="DFModel.Store.Instructions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Lender" EntityType="DFModel.Store.Lender" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Menu" EntityType="DFModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MenuType" EntityType="DFModel.Store.MenuType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="DFModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="Dealership_Address" Association="DFModel.Store.Dealership_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Dealership" EntitySet="Dealership" />
+    </AssociationSet>
+    <AssociationSet Name="Dealership_Contact" Association="DFModel.Store.Dealership_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Dealership" EntitySet="Dealership" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Buyer_Address" Association="DFModel.Store.FK_Buyer_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Buyer" EntitySet="Buyer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Buyer_Contact" Association="DFModel.Store.FK_Buyer_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Buyer" EntitySet="Buyer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_User" Association="DFModel.Store.FK_Company_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_User1" Association="DFModel.Store.FK_Company_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_User2" Association="DFModel.Store.FK_Company_User2">
+      <End Role="User" EntitySet="User" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deal_Buyer" Association="DFModel.Store.FK_Deal_Buyer">
+      <End Role="Buyer" EntitySet="Buyer" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deal_Dealership" Association="DFModel.Store.FK_Deal_Dealership">
+      <End Role="Dealership" EntitySet="Dealership" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deal_Lender" Association="DFModel.Store.FK_Deal_Lender">
+      <End Role="Lender" EntitySet="Lender" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lender_Address" Association="DFModel.Store.FK_Lender_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Lender" EntitySet="Lender" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lender_Contact" Association="DFModel.Store.FK_Lender_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Lender" EntitySet="Lender" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_Menu" Association="DFModel.Store.FK_Menu_Menu">
+      <End Role="Menu" EntitySet="Menu" />
+      <End Role="Menu1" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_MenuType" Association="DFModel.Store.FK_Menu_MenuType">
+      <End Role="MenuType" EntitySet="MenuType" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+    <Property Name="City" Type="nvarchar" MaxLength="100" />
+    <Property Name="State" Type="nvarchar" MaxLength="100" />
+    <Property Name="County" Type="nvarchar" MaxLength="100" />
+    <Property Name="Type" Type="nvarchar" MaxLength="100" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Buyer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SSN" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="DL" Type="varchar" MaxLength="50" />
+    <Property Name="DLExpiration" Type="datetime" />
+    <Property Name="DLState" Type="char" MaxLength="2" />
+    <Property Name="ContactId" Type="uniqueidentifier" />
+    <Property Name="AddressId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="CreatedByUserId" Type="uniqueidentifier" />
+    <Property Name="ModifiedByUserId" Type="uniqueidentifier" />
+    <Property Name="DeactivatedByUserId" Type="uniqueidentifier" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="Primary" Type="bit" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Fax" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Completed" Type="bit" />
+    <Property Name="CashDeal" Type="bit" />
+    <Property Name="SaleDate" Type="datetime" />
+    <Property Name="SalesPerson" Type="nvarchar(max)" />
+    <Property Name="DealershipId" Type="uniqueidentifier" />
+    <Property Name="LenderId" Type="uniqueidentifier" />
+    <Property Name="BuyerId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Dealership">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+    <Property Name="AddressID" Type="uniqueidentifier" />
+    <Property Name="ContactID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DocumentName" Type="nvarchar(max)" />
+    <Property Name="Required" Type="bit" Nullable="false" />
+    <Property Name="DocumentBankLenderID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DocumentBankLender_BankLenderID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Instructions">
+    <Key>
+      <PropertyRef Name="InstructionsID" />
+    </Key>
+    <Property Name="InstructionsID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Instruction" Type="nvarchar(max)" />
+    <Property Name="InstructionBankLenderID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InstructionBankLender_BankLenderID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Lender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="LenderName" Type="nvarchar" MaxLength="150" />
+    <Property Name="EIN" Type="nvarchar" MaxLength="150" />
+    <Property Name="DealershipSplit" Type="int" Nullable="false" />
+    <Property Name="BankSplit" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="20" />
+    <Property Name="AddressID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ContactID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DisplayText" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="MenuTypeId" Type="int" />
+    <Property Name="Area" Type="varchar" MaxLength="50" />
+    <Property Name="Controller" Type="varchar" MaxLength="50" />
+    <Property Name="Action" Type="varchar" MaxLength="200" />
+    <Property Name="CSSClass" Type="varchar" MaxLength="50" />
+    <Property Name="ImageUrl" Type="varchar" MaxLength="200" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="SortOrder" Type="smallint" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MenuType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" />
+    <Property Name="DateDeactivated" Type="datetime" />
+    <Property Name="CreatedByUserId" Type="uniqueidentifier" />
+    <Property Name="ModifiedByUserId" Type="uniqueidentifier" />
+    <Property Name="DeactivatedByUserId" Type="uniqueidentifier" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="Dealership_Address">
+    <End Role="Address" Type="DFModel.Store.Address" Multiplicity="0..1" />
+    <End Role="Dealership" Type="DFModel.Store.Dealership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dealership">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Dealership_Contact">
+    <End Role="Contact" Type="DFModel.Store.Contact" Multiplicity="0..1" />
+    <End Role="Dealership" Type="DFModel.Store.Dealership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dealership">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Buyer_Address">
+    <End Role="Address" Type="DFModel.Store.Address" Multiplicity="1" />
+    <End Role="Buyer" Type="DFModel.Store.Buyer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Buyer">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Buyer_Contact">
+    <End Role="Contact" Type="DFModel.Store.Contact" Multiplicity="1" />
+    <End Role="Buyer" Type="DFModel.Store.Buyer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Buyer">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_User">
+    <End Role="User" Type="DFModel.Store.User" Multiplicity="0..1" />
+    <End Role="Company" Type="DFModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CreatedByUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_User1">
+    <End Role="User" Type="DFModel.Store.User" Multiplicity="0..1" />
+    <End Role="Company" Type="DFModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="ModifiedByUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_User2">
+    <End Role="User" Type="DFModel.Store.User" Multiplicity="0..1" />
+    <End Role="Company" Type="DFModel.Store.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="DeactivatedByUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deal_Buyer">
+    <End Role="Buyer" Type="DFModel.Store.Buyer" Multiplicity="0..1" />
+    <End Role="Deal" Type="DFModel.Store.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buyer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="BuyerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deal_Dealership">
+    <End Role="Dealership" Type="DFModel.Store.Dealership" Multiplicity="0..1" />
+    <End Role="Deal" Type="DFModel.Store.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dealership">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="DealershipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deal_Lender">
+    <End Role="Lender" Type="DFModel.Store.Lender" Multiplicity="0..1" />
+    <End Role="Deal" Type="DFModel.Store.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="LenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lender_Address">
+    <End Role="Address" Type="DFModel.Store.Address" Multiplicity="1" />
+    <End Role="Lender" Type="DFModel.Store.Lender" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lender">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lender_Contact">
+    <End Role="Contact" Type="DFModel.Store.Contact" Multiplicity="1" />
+    <End Role="Lender" Type="DFModel.Store.Lender" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lender">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menu_Menu">
+    <End Role="Menu" Type="DFModel.Store.Menu" Multiplicity="0..1" />
+    <End Role="Menu1" Type="DFModel.Store.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menu_MenuType">
+    <End Role="MenuType" Type="DFModel.Store.MenuType" Multiplicity="0..1" />
+    <End Role="Menu" Type="DFModel.Store.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="MenuTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

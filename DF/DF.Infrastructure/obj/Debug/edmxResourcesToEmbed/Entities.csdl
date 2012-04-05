@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CWSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="CWSContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Menu" EntityType="CWSModel.Menu" />
+    <EntitySet Name="MenuPattern" EntityType="CWSModel.MenuPattern" />
+    <EntitySet Name="MenuType" EntityType="CWSModel.MenuType" />
+    <EntitySet Name="User" EntityType="CWSModel.User" />
+    <AssociationSet Name="FK_Menu_MenuType" Association="CWSModel.FK_Menu_MenuType">
+      <End Role="MenuType" EntitySet="MenuType" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuType_MenuPattern" Association="CWSModel.FK_MenuType_MenuPattern">
+      <End Role="MenuPattern" EntitySet="MenuPattern" />
+      <End Role="MenuType" EntitySet="MenuType" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="DisplayText" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="MenuTypeId" Type="Int32" />
+    <Property Name="Action" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="CSSClass" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="SortOrder" Type="Int16" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+    <Property Name="DateModified" Type="DateTime" />
+    <Property Name="DateDeactivated" Type="DateTime" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MenuType" Relationship="CWSModel.FK_Menu_MenuType" FromRole="Menu" ToRole="MenuType" />
+  </EntityType>
+  <EntityType Name="MenuPattern">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Horizontal" Type="Boolean" Nullable="false" />
+    <Property Name="Columns" Type="Int32" />
+    <Property Name="Rows" Type="Int32" />
+    <NavigationProperty Name="MenuType" Relationship="CWSModel.FK_MenuType_MenuPattern" FromRole="MenuPattern" ToRole="MenuType" />
+  </EntityType>
+  <EntityType Name="MenuType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CSSClass" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="MenuPatternId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Menu" Relationship="CWSModel.FK_Menu_MenuType" FromRole="MenuType" ToRole="Menu" />
+    <NavigationProperty Name="MenuPattern" Relationship="CWSModel.FK_MenuType_MenuPattern" FromRole="MenuType" ToRole="MenuPattern" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="UserStatusId" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+    <Property Name="DateModified" Type="DateTime" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Menu_MenuType">
+    <End Role="MenuType" Type="CWSModel.MenuType" Multiplicity="0..1" />
+    <End Role="Menu" Type="CWSModel.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="MenuTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuType_MenuPattern">
+    <End Role="MenuPattern" Type="CWSModel.MenuPattern" Multiplicity="1" />
+    <End Role="MenuType" Type="CWSModel.MenuType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MenuPattern">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MenuType">
+        <PropertyRef Name="MenuPatternId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

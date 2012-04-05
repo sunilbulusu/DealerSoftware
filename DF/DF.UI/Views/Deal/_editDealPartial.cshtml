@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DF.Domain.Concrete.Deal>
+
+<h2>Deals</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Completed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Completed)
+            @Html.ValidationMessageFor(model => model.Completed)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CashDeal)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CashDeal)
+            @Html.ValidationMessageFor(model => model.CashDeal)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SaleDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SaleDate)
+            @Html.ValidationMessageFor(model => model.SaleDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SalesPerson)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SalesPerson)
+            @Html.ValidationMessageFor(model => model.SalesPerson)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Buyer.Contact.FirstName, "Buyer")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Buyer.Contact.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Dealership.Contact.FirstName, "Buyer")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Dealership.Contact.FirstName)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DF.Domain.Abstract.IRegion>
+
+<div class="addItem">
+    @Html.ActionLink("Add Region", "AddRegion")
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#tblRegion").alternateBackground();
+    });
+
+
+</script>
+
+<h1>@ViewBag.Title</h1>
+
+<div class="formMessage">
+    @ViewBag.Message
+</div>
+
+<table id="form">
+    <tr>
+        <td>       
+            <table id="tblRegion">
+                <thead>
+                    <tr>
+                        <th>
+                            Details
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>&nbsp;</th>
+                        <th>
+                            &nbsp;
+                        </th>
+                        <th class="processing hide">
+                            &nbsp;
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var region in Model)
+                    {
+                        <tr>
+                            <td>                  
+                                @Html.ActionLink("View Details", "Index", "RegionLocation", new { id = region.Id }, null)
+                            </td>
+                            <td>
+                                @region.Name
+                            </td>
+                            <td>
+                                @region.Description
+                            </td>
+                            <td>
+                                <a href='@Url.Action("EditRegion", "Region",new {id=region.Id})'>
+                                    <img src="/library/images/edit.gif" alt="Edit" title="Edit Region" />
+                                </a>
+                            </td>
+  
+                            <td class="processing hide">
+                                
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+       
+            </table>
+        </td>
+    </tr>
+</table>

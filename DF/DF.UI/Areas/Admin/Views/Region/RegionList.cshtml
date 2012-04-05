@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DF.Domain.Abstract.IRegion>
+
+<script type="text/javascript">
+    $(function () {
+        $('#formAddRegion').submit(function () {
+            var regionId = $("#hdnformAddRegion").val();
+            var idVal = $("#hdnTeamId").val();
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: "id=" + idVal + "&regionId=" + regionId,
+                success: AddRegionSuccess,
+                error: AddRegionError
+            });
+            return false;
+        });
+    });
+
+
+        function AddRegion(id) {
+            $("#hdnformAddRegion").val(id);
+
+            $('#formAddRegion').submit();
+        }
+</script>
+
+<div class="close" onclick='$(this).parent().closePopup("fast");'>
+ X</div>
+<img src="/library/images/admin_button_arrow.png" class="popupArrow" />
+<table>
+    <tr>
+        <td>
+            <h1>Add Regions</h1>
+
+            <div class="content">
+               @using (Html.BeginForm("AddRegion", "Team",FormMethod.Post, new { id = "formAddRegion" })) {
+                
+                    <input type="hidden" name="hdnformAddRegion" id="hdnformAddRegion" />
+                   
+                    foreach (var region in @Model)
+                    {
+                        <div class="addableItem" id="div-@region.Id" onclick="AddRegion('@region.Id')">@region.Name</div>
+                    }
+                }
+            </div>
+        </td>
+    </tr>
+</table>

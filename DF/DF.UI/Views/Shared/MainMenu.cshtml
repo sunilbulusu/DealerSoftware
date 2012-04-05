@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DF.Domain.Abstract.IMenu>
+
+
+<div id="mainMenu">
+
+ 
+
+    <ul>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        @{
+            var cssclass = string.Empty;
+        }
+
+        @foreach(var item in Model)
+        {
+           
+            cssclass = ViewBag.RouteController.ToLower() == item.Controller.ToLower() ? "selected" : string.Empty;
+            
+            <li>@Html.ActionLink(@item.DisplayText, item.Action,item.Controller,new{@class=cssclass})</li>
+        }
+        
+        
+        @*<li><a href="#">Dashboard</a></li>
+        <li><a href="#" class="selected">Deal</a></li>
+        <li><a href="#">Inventory</a></li>
+        <li><a href="#">Messages</a></li>*@
+    </ul>
+
+    
+</div>

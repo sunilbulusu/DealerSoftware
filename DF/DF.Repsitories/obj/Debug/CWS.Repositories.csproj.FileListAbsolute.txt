@@ -1,0 +1,9 @@
+C:\CWS\CWS.Repsitories\bin\Debug\CWS.Repositories.dll
+C:\CWS\CWS.Repsitories\bin\Debug\CWS.Repositories.pdb
+C:\CWS\CWS.Repsitories\bin\Debug\CWS.Domain.dll
+C:\CWS\CWS.Repsitories\bin\Debug\Magic.dll
+C:\CWS\CWS.Repsitories\bin\Debug\CWS.Domain.pdb
+C:\CWS\CWS.Repsitories\bin\Debug\Magic.pdb
+C:\CWS\CWS.Repsitories\obj\Debug\ResolveAssemblyReference.cache
+C:\CWS\CWS.Repsitories\obj\Debug\CWS.Repositories.dll
+C:\CWS\CWS.Repsitories\obj\Debug\CWS.Repositories.pdb

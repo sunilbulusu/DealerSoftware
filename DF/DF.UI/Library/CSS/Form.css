@@ -1,0 +1,103 @@
+﻿
+#form 
+{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+textarea.width400px 
+{
+	padding:5px 5px 5px 7px;
+	width:400px;
+}
+
+textarea.width465px 
+{
+	padding:5px 5px 5px 7px;
+	width:465px;
+}
+
+textarea.height300px
+{
+	height:300px;
+}
+
+textarea.height400px 
+{
+	height:400px;
+}
+
+input[type="text"], 
+input[type="password"] 
+{
+	/*padding:2px 2px 2px 7px;*/
+    /*border: 1px solid #ccc;*/
+    font-size: 1.2em;
+    color: #444;
+    width: 200px;
+}
+
+input.width400px {
+	width:400px;
+}
+
+input.width500px {
+	width:500px;
+}
+
+input.width300px {
+	width:300px;
+}
+
+.error {
+    color: #ff0000;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label, 
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.display-field, 
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+.text-box {
+    width: 30em;
+}
+
+.text-box.multi-line {
+    height: 6.5em;
+}
+
+.tri-state {
+    width: 6em;
+}

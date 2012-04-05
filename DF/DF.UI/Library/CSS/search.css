@@ -1,0 +1,65 @@
+﻿
+
+#search {
+	float:right;
+	width:400px;
+	white-space: nowrap;
+	padding:0px;
+	position: relative;
+	margin-top:2px;
+}
+
+#searchText {
+	color:#636b64;
+	font-weight:normal;
+	width:50px;
+	float:right;
+	line-height: 23px;
+}
+
+#searchBox {
+	border:2px solid #a8b3aa;
+	width:285px;
+	float:right;
+}
+
+#searchBox #txtSearch {
+	border:0px;
+	width:200px;
+}
+
+#searchBy {
+	color:#505651;
+	font-weight:bold;
+	padding:0px 3px;
+	border-right:1px solid #a8b3aa;
+	background-image:url("/library/images/by_background.gif");
+	position:relative;
+	text-align: center;
+	width:30px;
+	float:left;
+	line-height: 20px;
+}
+
+#searchContent 
+{
+	padding:1px 0px 0px 5px;
+	width:150px;
+	float:left;
+	position:relative;
+}
+
+#searchGo {
+	color:#fff;
+	font-weight:bold;
+	padding:0px 3px;
+	border-left:1px solid #ce9a5e;
+	border-right:1px solid #ce9a5e;
+	background-image:url("/library/images/go_background.gif");
+	position:relative;
+	width:30px;
+	float:right;
+	text-align: center;
+	line-height: 20px;
+}
+

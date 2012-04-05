@@ -1,0 +1,34 @@
+﻿@model DF.Domain.Concrete.Deal
+           
+<h2>Deals</h2>
+
+    <div class="display-label">Completed</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Completed)
+    </div>
+
+    <div class="display-label">CashDeal</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CashDeal)
+    </div>
+
+    <div class="display-label">SaleDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SaleDate)
+    </div>
+
+    <div class="display-label">SalesPerson</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SalesPerson)
+    </div>
+
+    <div class="display-label">Buyer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Buyer.Contact.FirstName)
+    </div>
+
+    <div class="display-label">DealDealership</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Dealership.Contact.FirstName)
+    </div>
+     

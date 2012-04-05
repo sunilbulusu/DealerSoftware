@@ -1,0 +1,94 @@
+﻿@model IEnumerable<DF.Domain.Abstract.IDeal>
+
+@{
+    ViewBag.Title = "Deal";
+}
+
+<script type="text/javascript">
+    //    $(function () {
+    //        $("#dealContainer").tabs();
+    //    })
+</script>
+<div id="dealContainer" style="padding:20px;padding-bottom:40px;">
+    <div class="commands">
+        <a href="#"><img src="/Library/Images/add_button.png" style="width:10px;vertical-align:middle;padding-right:5px;" />Add New Deal</a>
+    </div>
+    <h2 style="margin:0 0 20px 0;">Deal Listings</h2>
+    <div class="clear"></div>
+    <table id="dealTable">
+        <thead>
+        <tr>
+            <th>
+                Sale Date
+            </th>
+            <th>
+                Buyer
+            </th>
+            <th>
+                Dealership
+            </th>
+            <th>
+                Sales Person
+            </th>
+            <th>
+                Completed
+            </th>
+            <th>
+                Cash Deal
+            </th>
+            <th>
+            </th>
+            
+        </tr></thead><tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.SaleDate.GetValueOrDefault().ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Buyer.Contact.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dealership.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalesPerson)
+                </td>
+                <td>
+                    @if (item.Completed.HasValue && item.Completed.Value)
+                    {<img src="/library/images/checkmark.png" class="checkmark" title="Completed" />}
+                    else
+                    {
+                        <img src="/library/images/x.png" class="x" title="Not Completed" />
+                    }
+                </td>
+                <td>
+                    @if (item.CashDeal.HasValue && item.CashDeal.Value)
+                    {<img src="/library/images/checkmark.png" class="checkmark" title="Completed" />}
+                    else
+                    {
+                        <span style="padding-left:5px;"></span>
+                    }
+                </td>
+                <td style="text-align: center">
+                    <a href="/deal/Details/@item.Id" style="text-decoration:none">
+                        <img src="/Library/Images/view_summary_icon.png" alt="View" class="viewDetail pointer" title="View Deal"/>
+                     </a>
+                    <a href="/deal/Details/@item.Id" style="text-decoration:none">
+                        <img src="/Library/Images/small_print_icon.png" alt="Print" class="printer pointer" title="Print Deal"/>
+                        </a>
+                    <a href="/deal/Details/@item.Id" style="text-decoration:none">
+                        <img src="/library/images/x.png" alt="Delete" class="xForDelete pointer" title="Delete Deal" />
+                        </a>
+                    
+                    @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                    @Html.ActionLink("Print", "Print", new { id = item.Id })*@
+                </td>
+            </tr>
+                
+        }</tbody>
+    </table>
+
+</div>

@@ -1,0 +1,40 @@
+﻿@model DF.Domain.Abstract.ITeam
+
+<div class="section radius5px">
+    <div class="commands">
+        <a href="#"><img src="/Library/Images/edit.gif" title="Edit" /></a>
+    </div>
+    <h2>Team Details</h2>
+        
+    <div class="content">
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        Description
+                    </td>
+                    <td>
+                        @Model.Description
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Created:
+                    </td>
+                    <td>
+                        @Model.DateCreated
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Active:
+                    </td>
+                    <td>
+                        @Model.Active
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+</div>

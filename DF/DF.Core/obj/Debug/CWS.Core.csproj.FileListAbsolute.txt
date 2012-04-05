@@ -1,0 +1,11 @@
+C:\CWS\CWS.Core\bin\Debug\CWS.Core.dll
+C:\CWS\CWS.Core\bin\Debug\CWS.Core.pdb
+C:\CWS\CWS.Core\bin\Debug\CWS.Domain.dll
+C:\CWS\CWS.Core\bin\Debug\CWS.Repositories.dll
+C:\CWS\CWS.Core\bin\Debug\Magic.dll
+C:\CWS\CWS.Core\bin\Debug\CWS.Domain.pdb
+C:\CWS\CWS.Core\bin\Debug\CWS.Repositories.pdb
+C:\CWS\CWS.Core\bin\Debug\Magic.pdb
+C:\CWS\CWS.Core\obj\Debug\ResolveAssemblyReference.cache
+C:\CWS\CWS.Core\obj\Debug\CWS.Core.dll
+C:\CWS\CWS.Core\obj\Debug\CWS.Core.pdb

@@ -1,0 +1,10 @@
+C:\CWS\cws.domain\bin\Debug\CWS.Domain.dll.config
+C:\CWS\cws.domain\bin\Debug\CWS.Domain.dll
+C:\CWS\cws.domain\bin\Debug\CWS.Domain.pdb
+C:\CWS\cws.domain\bin\Debug\EntityFramework.dll
+C:\CWS\cws.domain\bin\Debug\Magic.dll
+C:\CWS\cws.domain\bin\Debug\Magic.pdb
+C:\CWS\cws.domain\bin\Debug\EntityFramework.xml
+C:\CWS\cws.domain\obj\Debug\ResolveAssemblyReference.cache
+C:\CWS\cws.domain\obj\Debug\CWS.Domain.dll
+C:\CWS\cws.domain\obj\Debug\CWS.Domain.pdb

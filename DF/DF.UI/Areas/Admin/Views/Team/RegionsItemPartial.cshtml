@@ -1,0 +1,18 @@
+﻿@model DF.Domain.Abstract.ITeamRegion
+           
+  
+    <li id="li-@Model.Id">
+        <div class="commands">
+            <a href="#" id="lnk-@Model.Id" onclick="RemoveRegion('@Model.Id')">delete</a>                   
+        </div>
+        @Model.Region.Name
+        <ul id="ulTeamRegionLocations">
+            @foreach (var location in Model.Region.RegionLocation)
+            {
+                <li>
+                    @location.Value
+                </li>
+            }
+        </ul>
+    </li>
+               

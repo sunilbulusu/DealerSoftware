@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".adminPopup").slideUp();
+        $("#imgUsers").click(function () { $("#users").slideDown(); });
+    });
+</script>
+
+<table id="form">
+    <tr>
+        <td>
+
+            @Html.Action("AdminMenu", "Admin", new { area = "Admin" })
+            @*<div id="adminMenu">
+                <img src="/library/images/admin_button_generic.png" id="imgUsers" class="adminMenuButton" />
+                <div id="users" class="adminPopup hide">
+                    <ul>
+                        <li>
+                            <a href="#">test 1</a>
+                        </li>
+                        <li>
+                            <a href="#">test 2</a>   
+                        </li>
+                    </ul>
+                </div>
+                <img src="/library/images/admin_user_button.png" class="adminMenuButton" />
+                <img src="/library/images/admin_button_generic_orange.png" class="adminMenuButton" />
+                <br />
+                <img src="/library/images/admin_button_generic.png" class="adminMenuButton" />
+                <img src="/library/images/admin_user_button.png" class="adminMenuButton" />
+                <img src="/library/images/admin_button_generic_orange.png" class="adminMenuButton" />
+                <br />
+                <img src="/library/images/admin_button_generic.png" class="adminMenuButton" />
+                <img src="/library/images/admin_user_button.png" class="adminMenuButton" />
+                <img src="/library/images/admin_button_generic_orange.png" class="adminMenuButton" />
+                <br />
+                <img src="/library/images/admin_button_generic.png" class="adminMenuButton" />
+                <img src="/library/images/admin_user_button.png" class="adminMenuButton" />
+                <img src="/library/images/admin_button_generic_orange.png" class="adminMenuButton" />
+                <br />
+            </div>*@
+        </td>
+    </tr>
+</table>

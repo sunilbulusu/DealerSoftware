@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DF.Domain.Abstract.ITeamRegion>
+
+<div class="section radius5px">
+        <div class="commands">
+          
+        </div>
+        <h2>
+            Regions
+        </h2>
+       
+       @using (Html.BeginForm()) {
+           @Html.ValidationSummary(true)
+           <div class="content">
+            <ul>
+            
+            @foreach (var teamRegion in @Model)
+            {
+                <li>
+                    <div class="commands">
+                       <a href="#">delete</a>
+                    </div>
+                    @teamRegion.Region.Name
+                    <ul>
+                        @foreach (var location in teamRegion.Region.RegionLocation)
+                        {
+                            <li>
+                                @location.Value
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+        
+            </ul>
+            </div>
+        }
+    </div>
